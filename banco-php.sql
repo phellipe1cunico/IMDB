@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Tempo de geração: 04/06/2025 às 17:19
--- Versão do servidor: 10.4.32-MariaDB
--- Versão do PHP: 8.2.12
+-- Host: localhost:3307
+-- Tempo de geração: 05-Jun-2025 às 15:07
+-- Versão do servidor: 10.4.21-MariaDB
+-- versão do PHP: 8.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `filmes`
+-- Estrutura da tabela `filmes`
 --
 
 CREATE TABLE `filmes` (
@@ -32,20 +32,21 @@ CREATE TABLE `filmes` (
   `titulo` varchar(100) NOT NULL,
   `categoria` varchar(50) NOT NULL,
   `sinopse` text NOT NULL,
-  `ano` year(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `ano` year(4) NOT NULL,
+  `nota` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `filmes`
+-- Extraindo dados da tabela `filmes`
 --
 
-INSERT INTO `filmes` (`id`, `titulo`, `categoria`, `sinopse`, `ano`) VALUES
-(1, 'Senhor dos Anéis', 'Fantasia', 'O um Anel', '2001');
+INSERT INTO `filmes` (`id`, `titulo`, `categoria`, `sinopse`, `ano`, `nota`) VALUES
+(1, 'Senhor dos Anéis', 'Fantasia', 'O um Anel', 2001, 10);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `series`
+-- Estrutura da tabela `series`
 --
 
 CREATE TABLE `series` (
@@ -53,20 +54,21 @@ CREATE TABLE `series` (
   `titulo` varchar(100) NOT NULL,
   `categoria` varchar(50) NOT NULL,
   `sinopse` text NOT NULL,
-  `ano` year(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `ano` year(4) NOT NULL,
+  `nota` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `series`
+-- Extraindo dados da tabela `series`
 --
 
-INSERT INTO `series` (`id`, `titulo`, `categoria`, `sinopse`, `ano`) VALUES
-(2, 'The Walking Dead', 'Terror', 'Zumbis AAAAAAAA Morte AAAAAA', '2010');
+INSERT INTO `series` (`id`, `titulo`, `categoria`, `sinopse`, `ano`, `nota`) VALUES
+(2, 'The Walking Dead', 'Terror', 'Zumbis AAAAAAAA Morte AAAAAA', 2010, 0);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `usuario`
+-- Estrutura da tabela `usuario`
 --
 
 CREATE TABLE `usuario` (
@@ -76,10 +78,10 @@ CREATE TABLE `usuario` (
   `email` varchar(100) NOT NULL,
   `CPF` char(11) NOT NULL,
   `data_nascimento` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `usuario`
+-- Extraindo dados da tabela `usuario`
 --
 
 INSERT INTO `usuario` (`id`, `nome_usuario`, `senha`, `email`, `CPF`, `data_nascimento`) VALUES
@@ -90,19 +92,19 @@ INSERT INTO `usuario` (`id`, `nome_usuario`, `senha`, `email`, `CPF`, `data_nasc
 --
 
 --
--- Índices de tabela `filmes`
+-- Índices para tabela `filmes`
 --
 ALTER TABLE `filmes`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices de tabela `series`
+-- Índices para tabela `series`
 --
 ALTER TABLE `series`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices de tabela `usuario`
+-- Índices para tabela `usuario`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id`),
@@ -111,7 +113,7 @@ ALTER TABLE `usuario`
   ADD UNIQUE KEY `CPF` (`CPF`);
 
 --
--- AUTO_INCREMENT para tabelas despejadas
+-- AUTO_INCREMENT de tabelas despejadas
 --
 
 --
