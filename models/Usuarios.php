@@ -26,6 +26,10 @@ class Usuario {
         }
 
     }
-    
+
+    public static function cadastrar($usuario, $email, $senha) {
+        $banco = Banco::getConn();
+        $sql = "INSERT INTO usuarios (usuario, email, senha) VALUES ('$usuario', '$email', '$senha')";
+        $resp = $banco->query($sql);   
 }
 ?>

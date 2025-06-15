@@ -47,7 +47,7 @@ class FilmesController {
         } 
 
 
-        header("Location: ../filmes");
+        header("Location: ../catalogo_filmes");
     }
 
     
