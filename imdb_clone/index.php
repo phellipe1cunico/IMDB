@@ -21,19 +21,8 @@ if (isset($_SESSION['temp_message'])) {
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <nav>
-        <a href="index.php">Início</a>
-        <?php if (estaLogado()): ?>
-            <a href="logout.php">Sair (<?php echo htmlspecialchars($_SESSION['user_email']); ?>)</a>
-            <?php if (getUserType() === 'master'): ?>
-                <a href="adicionar_filme.php">Adicionar Filme</a>
-            <?php endif; ?>
-        <?php else: ?>
-            <a href="login_usuario.php">Login Usuário</a>
-            <a href="login_admin.php">Login Admin</a>
-            <a href="cadastro.php">Cadastro</a>
-        <?php endif; ?>
-    </nav>
+    <?php include 'header.php'; ?>
+
 
     <div class="container">
         <h1>Bem-vindo ao Meu Site de Filmes!</h1>
