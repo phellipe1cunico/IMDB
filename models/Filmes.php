@@ -1,49 +1,46 @@
 <?php
 require_once __DIR__ . '/../config/banco.php';
 
-class Fornecedor {
+class Filme {
 
-    public static function buscarFilmes()  {
+    public static function buscarFilmes() {
         $banco = Banco::getConn();
         $res = $banco->query("SELECT * FROM filmes");
-                
-        $fornecedores = [];
+
+        $filmes = [];
         while ($t = $res->fetch_object()) {
             $filmes[] = $t;
         }
-
         return $filmes;
     }
 
     public static function buscarId($id) {
         $banco = Banco::getConn();
+        $id = intval($id);
         $res = $banco->query("SELECT * FROM filmes WHERE id=$id");
 
-        if ($res->num_rows > 0) {
-            return $res->fetch_object();
-        } else {
-            return null;
-        }
-    }
-    
-    public static function adicionarFilmes($titulo_f, $diretor_f, $ano_f, $sinopse_f, $imagem_f) {
-        $banco = Banco::getConn();
-        $sql = "INSERT INTO filmes (titulo, diretor, ano, sinopse, imagem_filme) 
-                VALUES ('$titulo_f','$diretor_f','$ano_f','$sinopse_f', '$imagem_f')";
-        return $banco->query($sql);
+        return $res->num_rows > 0 ? $res->fetch_object() : null;
     }
 
-    public static function editarFilmes($idfilme, $titulo_f, $diretor_f, $ano_f, $sinopse_f, $imagem_f) {
+    public static function adicionarFilme($titulo, $diretor, $ano, $sinopse, $imagem) {
         $banco = Banco::getConn();
-        $sql = "UPDATE filmes
-                SET titulo='$titulo_f', diretor='$diretor_f', ano='$ano_f', sinopse='$sinopse_f', imagem_filme='$imagem_f' 
-                WHERE id='$idFilme'";
-        return $banco->query($sql);
+        $stmt = $banco->prepare("INSERT INTO filmes (titulo, diretor, ano, sinopse, imagem_filme) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssiss", $titulo, $diretor, $ano, $sinopse, $imagem);
+        return $stmt->execute();
     }
 
-    public static function apagarFilmes($idFilme) {
+    public static function editarFilme($id, $titulo, $diretor, $ano, $sinopse, $imagem) {
         $banco = Banco::getConn();
-        return $banco->query("DELETE FROM filmes WHERE id='$idFilme'");
+        $stmt = $banco->prepare("UPDATE filmes SET titulo=?, diretor=?, ano=?, sinopse=?, imagem_filme=? WHERE id=?");
+        $stmt->bind_param("ssissi", $titulo, $diretor, $ano, $sinopse, $imagem, $id);
+        return $stmt->execute();
     }
-    
+
+    public static function apagarFilme($id) {
+        $banco = Banco::getConn();
+        $stmt = $banco->prepare("DELETE FROM filmes WHERE id=?");
+        $stmt->bind_param("i", $id);
+        return $stmt->execute();
+    }
 }
+?>

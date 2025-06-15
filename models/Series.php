@@ -1,49 +1,46 @@
 <?php
 require_once __DIR__ . '/../config/banco.php';
 
-class Series {
+class Serie {
 
-    public static function buscarSeries()  {
+    public static function buscarSeries() {
         $banco = Banco::getConn();
         $res = $banco->query("SELECT * FROM series");
-                
+
         $series = [];
         while ($t = $res->fetch_object()) {
             $series[] = $t;
         }
-
         return $series;
     }
-    
-    public static function buscarIdSeries($id) {
+
+    public static function buscarId($id) {
         $banco = Banco::getConn();
+        $id = intval($id);
         $res = $banco->query("SELECT * FROM series WHERE id=$id");
 
-        if ($res->num_rows > 0) {
-            return $res->fetch_object();
-        } else {
-            return null;
-        }
+        return $res->num_rows > 0 ? $res->fetch_object() : null;
     }
 
-    public static function adicionarSeries($titulo_s, $diretor_s, $ano_s, $sinopse_s, $imagem_s) {
+    public static function adicionarSerie($titulo, $diretor, $ano, $sinopse, $imagem) {
         $banco = Banco::getConn();
-        $sql = "INSERT INTO series (titulo, diretor, ano, sinopse, imagem_serie) 
-                VALUES ('$titulo_s','$diretor_s','$ano_s','$sinopse_s', '$imagem_s')";
-        return $banco->query($sql);
+        $stmt = $banco->prepare("INSERT INTO series (titulo, diretor, ano, sinopse, imagem_serie) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssiss", $titulo, $diretor, $ano, $sinopse, $imagem);
+        return $stmt->execute();
     }
 
-    public static function editarSeries($idSerie, $titulo_s, $diretor_s, $ano_s, $sinopse_s, $imagem_s) {
+    public static function editarSerie($id, $titulo, $diretor, $ano, $sinopse, $imagem) {
         $banco = Banco::getConn();
-        $sql = "UPDATE series 
-                SET titulo='$titulo_s', diretor='$diretor_s', ano='$ano_s', sinopse='$sinopse_s', imagem_serie='$imagem_serie' 
-                WHERE id='$idSerie'";
-        return $banco->query($sql);
+        $stmt = $banco->prepare("UPDATE series SET titulo=?, diretor=?, ano=?, sinopse=?, imagem_serie=? WHERE id=?");
+        $stmt->bind_param("ssissi", $titulo, $diretor, $ano, $sinopse, $imagem, $id);
+        return $stmt->execute();
     }
-    
-    public static function apagarSeries($idSerie) {
+
+    public static function apagarSerie($id) {
         $banco = Banco::getConn();
-        return $banco->query("DELETE FROM series WHERE id='$idSerie'");
+        $stmt = $banco->prepare("DELETE FROM series WHERE id=?");
+        $stmt->bind_param("i", $id);
+        return $stmt->execute();
     }
-    
 }
+?>
