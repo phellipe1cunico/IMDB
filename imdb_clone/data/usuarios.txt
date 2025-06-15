@@ -1,3 +1,0 @@
-684ecc6a4e5fc;igor.marochi@outlook.com;$2y$10$KKOR6gSrsFj1wn5UkGhqMOhMZD6/e2nOKNekRn7Zi84oiV6CN9CWa;master
-admin_684ecfc6f0153;admin@admin.com;$2y$10$UCOVkC4yDnIj9UxrPPHTP.5o59jHSRbNlYFEzK2c3SrhP3hGD3DdO;master
-user_684ed168e5f37;banana@gmail.com;$2y$10$Zr.Bc8KMTzC0pgLpfkDxruYr/SrOfyhHWYIn1VY/YPA8O3iXocixm;user
