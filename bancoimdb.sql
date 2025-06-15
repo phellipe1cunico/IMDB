@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 15/06/2025 às 20:05
+-- Tempo de geração: 16/06/2025 às 01:28
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `banco-imdb`
+-- Banco de dados: `bancoimdb`
 --
 
 -- --------------------------------------------------------
@@ -54,7 +54,8 @@ CREATE TABLE `filmes` (
 --
 
 INSERT INTO `filmes` (`id`, `titulo`, `diretor`, `ano`, `sinopse`, `imagem_filme`) VALUES
-(1, 'Pecadores', ' Ryan Coogler', '2025', 'Tentando deixar suas vidas problemáticas para trás, dois irmãos gêmeos retornam à sua cidade natal para recomeçar, apenas para descobrir que um mal ainda maior está esperando para recebê-los de volta', '');
+(1, 'Pecadores', ' Ryan Coogler', '2025', 'Tentando deixar suas vidas problemáticas para trás, dois irmãos gêmeos retornam à sua cidade natal para recomeçar, apenas para descobrir que um mal ainda maior está esperando para recebê-los de volta', ''),
+(2, 'Conclave', 'Edward Berger', '2025', 'Com a morte do Papa, o cardeal Lawrence reúne um grupo de sacerdotes para eleger seu sucessor. Cercado por líderes do mundo todo nos corredores do Vaticano, ele descobre uma trilha de segredos profundos que podem abalar a própria fundação da Igreja', '');
 
 -- --------------------------------------------------------
 
@@ -70,6 +71,13 @@ CREATE TABLE `series` (
   `sinopse` text NOT NULL,
   `imagem_serie` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `series`
+--
+
+INSERT INTO `series` (`id`, `titulo`, `diretor`, `ano`, `sinopse`, `imagem_serie`) VALUES
+(1, 'The Walking Dead', 'Frank Darabon', '2010', 'Baseado na história em quadrinhos escrita por Robert Kirkman, este drama potente e visceral retrata a vida nos Estados Unidos pós-apocalíptico. Um grupo de sobreviventes, liderado pelo policial Rick Grimes, segue viajando em busca de uma nova moradia segura e distante dos mortos-vivos', '');
 
 -- --------------------------------------------------------
 
@@ -129,13 +137,13 @@ ALTER TABLE `avaliacoes_filmes`
 -- AUTO_INCREMENT de tabela `filmes`
 --
 ALTER TABLE `filmes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `series`
 --
 ALTER TABLE `series`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`

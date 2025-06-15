@@ -5,7 +5,7 @@ abstract class Banco {
 
     public static function getConn() {
         if (!isset(self::$conn)) {
-            self::$conn = new mysqli("localhost", "root", "", "banco-imdb");
+            self::$conn = new mysqli("localhost", "root", "", "bancoimdb");
             if (self::$conn->connect_error) {
                 die("Erro ao conectar ao banco: " . self::$conn->connect_error);
             }
