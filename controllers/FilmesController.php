@@ -6,10 +6,8 @@ class FilmesController {
 
     public static function index() {
 
-        if (!isset($_SESSION['user_id'])) {
-            header('Location: login');
-        }
-
+        header('Location: view/index2.php');
+    
         $filmes = Filmes::buscarFilmes();
 
         require __DIR__ . '/../views/filmes.php';
@@ -23,14 +21,14 @@ class FilmesController {
             header('Location: login');
         }
 
-        require __DIR__ . '/../views/filmes-criar.php';
+        require __DIR__ . '/../views/adicionar_filme.php';
     }
 
 
     public static function adicionarFilmes() {
-        if (!isset($_SESSION['user_id'])) {
-            header('Location: login');
-        }
+        //if (!isset($_SESSION['user_id'])) {
+            header('Location: adicionar');
+        //}
 
         if ($_SERVER['REQUEST_METHOD'] === "POST") {
 

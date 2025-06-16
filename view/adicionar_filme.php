@@ -3,7 +3,7 @@
 <h2>Novo Filme</h2>
 
 <form action="adicionar" method="post">
-    <input type="hidden" name="id" value="<?= $filme['id'] ?? '' ?>
+    <input type="hidden" name="id" value="<?= $filme['id'] ?? '' ?>"
     
     <label>Titulo</label> 
     <input type="text" name="titulo" value="<?= $filme['titulo'] ?? '' ?>" required>
@@ -15,11 +15,11 @@
     <input type="number" name="ano" value="<?= $filme['ano'] ?? '' ?>">
   
     <label>Sinopse</label>
-    <input type="text" name="sinopse" value="<?= $filme['sinopse'] ?? '' ?>">
+    <textarea name="sinopse" rows="2"><?= $filme['sinopse'] ?? '' ?></textarea>
   
     <button type="submit" class="btn btn-primary">Salvar</button>
   
-    <a href="catalogo_filmes.php" class="btn btn-secondary">Cancelar</a>
+    <a href="/catalogo_filmes.php" class="btn btn-secondary">Cancelar</a>
 </form>
 
 

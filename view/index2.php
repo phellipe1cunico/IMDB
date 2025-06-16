@@ -17,7 +17,7 @@ $series = Serie::buscarSeries();
     <?php include 'header.php'; ?>
     <div class="container">
         <h1>Bem-vindo ao Meu Site de Filmes!</h1>
-        <p>Explore os filmes disponíveis ou adicione novos filmes se for um administrador.</p>
+        <p>Explore os filmes disponíveis ou adicione novos filmes</p>
 
         <h2>Filmes em Cartaz</h2>
 </body>
