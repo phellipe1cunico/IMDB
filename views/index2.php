@@ -26,7 +26,7 @@ $series = Serie::buscarSeries();
             <div class="row row-cols-1 row-cols-md-2 g-4">
                 <?php $count = 0; ?>
                 <?php foreach ($filmes as $filme): ?>
-                    <?php if ($count < 2): // Exibe apenas os 2 primeiros filmes ?>
+                    <?php if ($count < 2): ?>
                         <div class="col">
                             <div class="card h-100">
                                 <img src="<?php echo htmlspecialchars($filme->imagem_filme); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($filme->titulo); ?>">
@@ -56,7 +56,7 @@ $series = Serie::buscarSeries();
             <div class="row row-cols-1 row-cols-md-2 g-4">
                 <?php $count = 0; ?>
                 <?php foreach ($series as $serie): ?>
-                    <?php if ($count < 2): // Exibe apenas as 2 primeiras séries ?>
+                    <?php if ($count < 2): ?>
                         <div class="col">
                             <div class="card h-100">
                                 <img src="<?php echo htmlspecialchars($serie->imagem_serie); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($serie->titulo); ?>">

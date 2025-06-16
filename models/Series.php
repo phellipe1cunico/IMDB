@@ -22,14 +22,25 @@ class Serie {
 
     public static function adicionarSerie($titulo, $diretor, $ano, $sinopse, $imagem) {
         $banco = Banco::getConn();
-        // A query SQL é construída diretamente com as variáveis
-        $sql = "INSERT INTO series (titulo, diretor, ano, sinopse, imagem_serie) VALUES ('$titulo', '$diretor', '$ano', '$sinopse', '$imagem')";
+    
+        $titulo_escaped = $banco->real_escape_string($titulo);
+        $diretor_escaped = $banco->real_escape_string($diretor);
+        $sinopse_escaped = $banco->real_escape_string($sinopse);
+        $imagem_escaped = $banco->real_escape_string($imagem);
+    
+        $sql = "INSERT INTO series (titulo, diretor, ano, sinopse, imagem_serie) VALUES ('$titulo_escaped', '$diretor_escaped', '$ano', '$sinopse_escaped', '$imagem_escaped')";
         return $banco->query($sql);
     }
 
     public static function editarSerie($id, $titulo, $diretor, $ano, $sinopse, $imagem) {
         $banco = Banco::getConn();
-        $sql = "UPDATE series SET titulo='$titulo', diretor='$diretor', ano='$ano', sinopse='$sinopse', imagem_serie='$imagem' WHERE id=$id";
+
+        $titulo_escaped = $banco->real_escape_string($titulo);
+        $diretor_escaped = $banco->real_escape_string($diretor);
+        $sinopse_escaped = $banco->real_escape_string($sinopse);
+        $imagem_escaped = $banco->real_escape_string($imagem);
+    
+        $sql = "UPDATE series SET titulo='$titulo_escaped', diretor='$diretor_escaped', ano='$ano', sinopse='$sinopse_escaped', imagem_serie='$imagem_escaped' WHERE id=$id";
         return $banco->query($sql);
     }
 

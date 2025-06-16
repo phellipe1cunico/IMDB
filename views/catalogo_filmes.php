@@ -1,8 +1,8 @@
 <?php
 require_once __DIR__ . '/../models/Filmes.php';
-require_once __DIR__ . '/../models/Usuarios.php'; // Incluir para verificar se está logado
+require_once __DIR__ . '/../models/Usuarios.php';
 
-// A variável $filmes já deve vir do controller, mas para garantir se acessado diretamente:
+
 if (!isset($filmes)) {
     $filmes = Filme::buscarFilmes();
 }
