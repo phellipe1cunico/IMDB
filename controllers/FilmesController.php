@@ -52,7 +52,7 @@ class FilmesController {
 
         Filme::apagarFilme($idFilme); // Corrigido para o nome correto do método
 
-        header('Location: ../../filmes');
+        header('Location: /vitor/IMDB/filmes');
         exit();
     }
 }

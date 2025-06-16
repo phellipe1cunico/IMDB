@@ -22,11 +22,10 @@ class Filme {
         return $res->num_rows > 0 ? $res->fetch_object() : null;
     }
 
-    public static function adicionarFilme($titulo, $diretor, $ano, $sinopse, $imagem) {
+    public static function adicionarFilme($titulo_f, $diretor_f, $ano_f, $sinopse_f, $imagem_filme) {
         $banco = Banco::getConn();
-        $stmt = $banco->prepare("INSERT INTO filmes (titulo, diretor, ano, sinopse, imagem_filme) VALUES (?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssiss", $titulo, $diretor, $ano, $sinopse, $imagem);
-        return $stmt->execute();
+        $sql = "INSERT INTO filmes (titulo, diretor, ano, sinopse, imagem_filme) VALUES ('$titulo_f', '$diretor_f', '$ano_f', '$sinopse_f', '$imagem_filme')";
+        return $banco->query($sql);
     }
 
     public static function editarFilme($id, $titulo, $diretor, $ano, $sinopse, $imagem) {
