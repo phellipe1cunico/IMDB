@@ -3,6 +3,7 @@ require_once __DIR__ . '/../models/Filmes.php';
 $filmes = Filme::buscarFilmes();
 
 ?>
+<?php include 'header.php'; ?>
 <h1>Catálogo de Filmes</h1>
 <a href="filmes/novo" class="btn btn-primary">Adicionar Novo Filme</a>
 <hr>
@@ -14,6 +15,8 @@ $filmes = Filme::buscarFilmes();
         <p><strong>Ano: </strong><?php echo htmlspecialchars($filme->ano); ?></p>
         <p><strong>Sinopse: </strong><?php echo htmlspecialchars($filme->sinopse); ?></p>
         
+        <a href="filmes/editar/<?php echo $filme->id; ?>" class="btn btn-warning">Editar</a>
+
         <a href="filmes/apagar/<?php echo $filme->id; ?>" 
            class="btn btn-danger" 
            onclick="return confirm('Tem certeza que deseja excluir este filme?');">

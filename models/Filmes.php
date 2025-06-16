@@ -22,24 +22,25 @@ class Filme {
         return $res->num_rows > 0 ? $res->fetch_object() : null;
     }
 
-    public static function adicionarFilme($titulo_f, $diretor_f, $ano_f, $sinopse_f, $imagem_filme) {
+    public static function adicionarFilme($titulo_f, $diretor_f, $ano_f, $sinopse_f) {
         $banco = Banco::getConn();
         $sql = "INSERT INTO filmes (titulo, diretor, ano, sinopse, imagem_filme) VALUES ('$titulo_f', '$diretor_f', '$ano_f', '$sinopse_f', '$imagem_filme')";
         return $banco->query($sql);
     }
 
-    public static function editarFilme($id, $titulo, $diretor, $ano, $sinopse, $imagem) {
+
+    public static function editarFilme($id, $titulo, $diretor, $ano, $sinopse, $imagem_filme) {
         $banco = Banco::getConn();
-        $stmt = $banco->prepare("UPDATE filmes SET titulo=?, diretor=?, ano=?, sinopse=?, imagem_filme=? WHERE id=?");
-        $stmt->bind_param("ssissi", $titulo, $diretor, $ano, $sinopse, $imagem, $id);
-        return $stmt->execute();
+        $sql = "UPDATE filmes SET titulo='$titulo', diretor='$diretor', ano='$ano', sinopse='$sinopse', imagem_filme='$imagem_filme' WHERE id=$id";
+        return $banco->query($sql);
     }
 
-    public static function apagarFilme($id) {
+     public static function apagarFilme($id) {
         $banco = Banco::getConn();
-        $stmt = $banco->prepare("DELETE FROM filmes WHERE id=?");
-        $stmt->bind_param("i", $id);
-        return $stmt->execute();
+        $id = intval($id);
+        $sql = "DELETE FROM filmes WHERE id = $id";
+        return $banco->query($sql);
     }
 }
+
 ?>

@@ -1,4 +1,5 @@
 <?php
+
 require_once __DIR__ . '/../models/Filmes.php';
 
 class FilmesController {
@@ -45,10 +46,33 @@ class FilmesController {
         exit(); // É uma boa prática adicionar exit() após um redirecionamento.
     }
 
+    public static function editar($id) {
+        
+        $filme = Filme::buscarId($id);
+        require __DIR__ . '/../views/adicionar_filme.php';
+    }
+    
+    public static function atualizar() {
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'] ?? null;
+            $titulo = $_POST['titulo'] ?? null;
+            $diretor = $_POST['diretor'] ?? null;
+            $ano = $_POST['ano'] ?? null;
+            $sinopse = $_POST['sinopse'] ?? null;
+            $imagem_filme = $_POST['imagem_filme'] ?? null;
+
+            if ($id && $titulo && $diretor && $ano && $sinopse && $imagem_filme) {
+            Filme::editarFilme($id, $titulo, $diretor, $ano, $sinopse, $imagem_filme);
+            }
+        }
+    
+        header("Location: /vitor/IMDB/filmes");
+        exit();
+    }
+    
+
     public static function apagarFilmes($idFilme) {
-        //if (!isset($_SESSION['user_id'])) {
-        //    header('Location: login');
-        //}
 
         Filme::apagarFilme($idFilme); // Corrigido para o nome correto do método
 
