@@ -1,4 +1,5 @@
 <?php
+// Garanta que este caminho está correto para o seu arquivo de conexão com o banco
 require_once __DIR__ . '/../config/banco.php';
 
 class Usuario {
@@ -13,6 +14,7 @@ class Usuario {
         if ($resp && $resp->num_rows > 0) {
             $usuario_obj = $resp->fetch_object();
             if (password_verify($senha, $usuario_obj->senha)) {
+                // NOVO/CONFIRMADO: Setar as variáveis de sessão quando o login for bem-sucedido
                 $_SESSION['user_id'] = $usuario_obj->id;
                 $_SESSION['user_nome'] = $usuario_obj->usuario;
                 return true;
@@ -42,10 +44,10 @@ class Usuario {
     }
 
     /**
-     * ESTA É A FUNÇÃO QUE ESTÁ FALTANDO NO SEU ARQUIVO
-     * Verifica se o usuário está logado checando a variável de sessão.
+     * Verifica se o usuário está logado checando a variável de sessão 'user_id'.
      */
     public static function estaLogado() {
+        // CONFIRMADO: Esta é a função que usaremos para verificar o login
         return isset($_SESSION['user_id']);
     }
 
@@ -54,7 +56,9 @@ class Usuario {
     }
 
     public static function logout() {
-        session_destroy();
+        // CONFIRMADO: Método para encerrar a sessão
+        session_unset(); // Remove todas as variáveis de sessão
+        session_destroy(); // Destrói a sessão
     }
 }
 ?>
