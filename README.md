@@ -31,3 +31,8 @@
 
 - Xampp
 - Git instalado
+
+##Execução
+- Criar uma pasta chamada vitor (pois as rotas foram configuradas a partir desta pasta)
+- git clone
+  
