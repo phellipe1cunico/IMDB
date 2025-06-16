@@ -22,7 +22,7 @@ class Serie {
 
     public static function adicionarSerie($titulo, $diretor, $ano, $sinopse, $imagem) {
         $banco = Banco::getConn();
-        // A query SQL é construída diretamente com as variáveis
+        
         $sql = "INSERT INTO series (titulo, diretor, ano, sinopse, imagem_serie) VALUES ('$titulo', '$diretor', '$ano', '$sinopse', '$imagem')";
         return $banco->query($sql);
     }

@@ -41,7 +41,7 @@
 </div>
 
 <script>
-// Exemplo de JavaScript para desativar o envio de formulários se houver campos inválidos
+
 (function () {
   'use strict'
 

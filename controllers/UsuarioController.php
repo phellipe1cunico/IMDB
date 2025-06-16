@@ -3,12 +3,12 @@ require_once __DIR__ . '/../models/Usuarios.php';
 
 class UsuarioController {
 
-    // Método para mostrar o formulário de cadastro
+    
     public static function novo() {
         require __DIR__ . '/../views/cadastrar_usuario.php';
     }
 
-    // Método para processar o cadastro
+    
     public static function criar() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $usuario = $_POST['usuario'] ?? null;
@@ -41,15 +41,12 @@ class UsuarioController {
         exit();
     }
 
-    /**
-     * ESTE É O MÉTODO QUE ESTÁ FALTANDO NO SEU ARQUIVO.
-     * A tarefa dele é simplesmente mostrar a página de login.
-     */
+    
     public static function login() {
         require __DIR__ . '/../views/login.php';
     }
 
-    // Método para processar a tentativa de login
+    
     public static function auth() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $usuario = $_POST['usuario'] ?? null;
@@ -66,7 +63,7 @@ class UsuarioController {
         exit();
     }
 
-    // Método para processar o logout
+    
     public static function logout() {
         Usuario::logout();
         header('Location: /vitor/IMDB/inicio');

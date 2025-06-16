@@ -1,7 +1,7 @@
 <?php
-// Garanta que este caminho está correto para o seu arquivo de conexão com o banco
+
 require_once __DIR__ . '/../config/banco.php';
-// NOVO: Incluir a classe Usuario para usar seus métodos de autenticação
+
 require_once __DIR__ . '/Usuarios.php';
 
 class Filme {
@@ -26,17 +26,17 @@ class Filme {
     }
 
     public static function adicionarFilme($titulo_f, $diretor_f, $ano_f, $sinopse_f, $imagem_filme) {
-        // NOVO: Adicionar verificação de login também no Model para camada extra de segurança
+        
         if (!Usuario::estaLogado()) {
             error_log("Tentativa de adicionar filme por usuário não logado. Título: $titulo_f");
             return false;
         }
 
         $banco = Banco::getConn();
-        // ALTERADO: Escapar todos os dados para prevenir SQL Injection
+        
         $titulo_f = $banco->real_escape_string($titulo_f);
         $diretor_f = $banco->real_escape_string($diretor_f);
-        $ano_f = intval($ano_f); // Garante que é um inteiro
+        $ano_f = intval($ano_f); 
         $sinopse_f = $banco->real_escape_string($sinopse_f);
         $imagem_filme = $banco->real_escape_string($imagem_filme);
 
@@ -46,14 +46,14 @@ class Filme {
 
 
     public static function editarFilme($id, $titulo, $diretor, $ano, $sinopse, $imagem_filme) {
-        // NOVO: Verifica se o usuário está logado antes de permitir a edição
+        
         if (!Usuario::estaLogado()) {
             error_log("Tentativa de edição de filme por usuário não logado. ID do filme: $id");
-            return false; // Retorna false se o usuário não estiver logado
+            return false; 
         }
 
         $banco = Banco::getConn();
-        // ALTERADO: Escapar todos os dados para prevenir SQL Injection
+        
         $id = intval($id);
         $titulo = $banco->real_escape_string($titulo);
         $diretor = $banco->real_escape_string($diretor);
@@ -66,10 +66,10 @@ class Filme {
     }
 
     public static function apagarFilme($id) {
-        // NOVO: Verifica se o usuário está logado antes de permitir a exclusão
+        
         if (!Usuario::estaLogado()) {
             error_log("Tentativa de exclusão de filme por usuário não logado. ID do filme: $id");
-            return false; // Retorna false se o usuário não estiver logado
+            return false; 
         }
 
         $banco = Banco::getConn();
