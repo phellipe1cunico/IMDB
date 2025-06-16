@@ -54,14 +54,14 @@
 </form>
 
 <script>
-// Exemplo de JavaScript para desativar o envio de formulários se houver campos inválidos
+
 (function () {
   'use strict'
 
-  // Busque todos os formulários que queremos aplicar estilos de validação Bootstrap personalizados
+  
   var forms = document.querySelectorAll('.needs-validation')
 
-  // Faça um loop sobre eles e impeça o envio
+  
   Array.prototype.slice.call(forms)
     .forEach(function (form) {
       form.addEventListener('submit', function (event) {
