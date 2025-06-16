@@ -32,7 +32,7 @@
 - Xampp
 - Git instalado
 
-##Execução
+## Execução
 - Criar uma pasta chamada vitor (pois as rotas foram configuradas a partir desta pasta)
 - git clone
   
