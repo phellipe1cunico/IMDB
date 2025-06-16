@@ -66,4 +66,15 @@ class FilmesController {
         header('Location: /vitor/IMDB/filmes');
         
     }
+
+    public static function detalhe($id) {
+        $filme = Filme::buscarId($id); 
+        if ($filme) {
+            require __DIR__ . '/../views/detalhe_filme.php';
+        } else {
+            
+            header("Location: /vitor/IMDB/filmes");
+            
+        }
+    }
 }

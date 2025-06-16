@@ -31,11 +31,10 @@ $series = Serie::buscarSeries();
                             <div class="card h-100">
                                 <img src="<?php echo htmlspecialchars($filme->imagem_filme); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($filme->titulo); ?>">
                                 <div class="card-body">
-                                    <h5 class="card-title"><?php echo htmlspecialchars($filme->titulo); ?></h5>
-                                    <p class="card-text"><small class="text-muted">Diretor: <?php echo htmlspecialchars($filme->diretor); ?> (<?php echo htmlspecialchars($filme->ano); ?>)</small></p>
-                                    <p class="card-text"><?php echo htmlspecialchars(mb_strimwidth($filme->sinopse, 0, 100, "...")); ?></p>
-                                    <a href="/vitor/IMDB/filmes" class="btn btn-sm btn-outline-primary">Ver Detalhes</a>
-                                </div>
+                                <h5 class="card-title"><?php echo htmlspecialchars($filme->titulo); ?></h5>
+                                <p class="card-text"><small class="text-muted">Diretor: <?php echo htmlspecialchars($filme->diretor); ?> (<?php echo htmlspecialchars($filme->ano); ?>)</small></p>
+                                <p class="card-text"><?php echo htmlspecialchars(mb_strimwidth($filme->sinopse, 0, 100, "...")); ?></p>
+                                <a href="/vitor/IMDB/filmes/detalhe/<?php echo $filme->id; ?>" class="btn btn-sm btn-outline-primary">Ver Detalhes</a> </div>
                             </div>
                         </div>
                         <?php $count++; ?>
@@ -60,16 +59,15 @@ $series = Serie::buscarSeries();
                         <div class="col">
                             <div class="card h-100">
                                 <img src="<?php echo htmlspecialchars($serie->imagem_serie); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($serie->titulo); ?>">
-                                <div class="card-body">
-                                    <h5 class="card-title"><?php echo htmlspecialchars($serie->titulo); ?></h5>
-                                    <p class="card-text"><small class="text-muted">Diretor: <?php echo htmlspecialchars($serie->diretor); ?> (<?php echo htmlspecialchars($serie->ano); ?>)</small></p>
-                                    <p class="card-text"><?php echo htmlspecialchars(mb_strimwidth($serie->sinopse, 0, 100, "...")); ?></p>
-                                    <a href="/vitor/IMDB/series" class="btn btn-sm btn-outline-primary">Ver Detalhes</a>
-                                </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><?php echo htmlspecialchars($serie->titulo); ?></h5>
+                                <p class="card-text"><small class="text-muted">Diretor: <?php echo htmlspecialchars($serie->diretor); ?> (<?php echo htmlspecialchars($serie->ano); ?>)</small></p>
+                                <p class="card-text"><?php echo htmlspecialchars(mb_strimwidth($serie->sinopse, 0, 100, "...")); ?></p>
+                                <a href="/vitor/IMDB/series/detalhe/<?php echo $serie->id; ?>" class="btn btn-sm btn-outline-primary">Ver Detalhes</a> </div>
                             </div>
                         </div>
-                        <?php $count++; ?>
-                    <?php endif; ?>
+                            <?php $count++; ?>
+                        <?php endif; ?>
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>

@@ -36,6 +36,7 @@ match ($pagina) {
     'filmes/editar' => FilmesController::editar($url[2]),
     'filmes/atualizar' => FilmesController::atualizar(),
     'filmes/apagar' => FilmesController::apagarFilmes($url[2]),
+    'filmes/detalhe' => FilmesController::detalhe($url[2]),
 
     // Rotas de Séries
     'series/novo' => SeriesController::novo(),
@@ -43,6 +44,7 @@ match ($pagina) {
     'series/editar' => SeriesController::editar($url[2]),
     'series/atualizar' => SeriesController::atualizar(),
     'series/apagar' => SeriesController::apagarSeries($url[2]),
+    'series/detalhe' => SeriesController::detalhe($url[2]),
     
     default => HomeController::index(),
 };

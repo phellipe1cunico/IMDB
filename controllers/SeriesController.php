@@ -55,4 +55,15 @@ class SeriesController {
         header('Location: /vitor/IMDB/series');
         exit();
     }
+
+    public static function detalhe($id) {
+        $serie = Serie::buscarId($id); // Reutiliza a função que busca por ID
+        if ($serie) {
+            require __DIR__ . '/../views/detalhe_serie.php'; // Cria um novo arquivo de view para isso
+        } else {
+            // Tratar caso a série não seja encontrada
+            header("Location: /vitor/IMDB/series");
+            exit();
+        }
+    }
 }
