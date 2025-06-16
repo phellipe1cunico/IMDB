@@ -1,7 +1,7 @@
 <?php
 session_start(); // Inicia a sessão para mensagens flash (opcional, mas útil)
 // require_once '../config/db.php'; // Linha original com PDO
-require_once '../config/banco.php'; // Assumindo que seu arquivo de conexão mysqli se chama banco.php e está em config
+require_once __DIR__ . '/../config/banco.php'; // Assumindo que seu arquivo de conexão mysqli se chama banco.php e está em config
 
 // Certifique-se de que seu arquivo banco.php define uma variável de conexão, por exemplo: $conn
 // Exemplo: $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);

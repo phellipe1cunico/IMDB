@@ -1,8 +1,11 @@
 <?php
-require_once '../models/Series.php';
+require_once __DIR__ . '/../models/Series.php';
 $series = Serie::buscarSeries();
 
 ?>
+
+<?php include 'header.php'; ?>
+
 <h1>Catálogo de Séries</h1>
 <?php foreach ($series as $serie): ?>
     <div>

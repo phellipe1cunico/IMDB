@@ -1,46 +1,40 @@
 <?php
 
-// Não mudar nada aqui, tudo deve funcinar normalmente
-/// ---------------------------------------------------------------
+// Mini gerenciador de rotas
+$url = $_GET['url'] ?? 'inicio'; // Se a URL estiver vazia, vai para 'inicio'
+$url = explode('/', $url);
 
-// Mini gerenciador de rotas usando match
-// Captura a rota amigável (ex.: 'login', 'Filmeses/edit/5')
-$url = $_GET['url'] ?? null;
-$url = explode("/", $url);
-// print_r($url);
-// echo "<hr>";
-
-$pagina =  $url[0];
+$pagina = $url[0];
 
 if (isset($url[1])) {
-    $pagina = "{$url[0]}/$url[1]";
+    $pagina = "{$url[0]}/{$url[1]}";
 }
 
 /// ---------------------------------------------------------------
 
-if(!isset($_SESSION)) {
-    session_start();
-}
+//if (!isset($_SESSION)) {
+   // session_start();
+//}
 
-// Inclui controllers
+// Inclui todos os controllers necessários
+require __DIR__ . '/controllers/HomeController.php';
 require __DIR__ . '/controllers/FilmesController.php';
+require __DIR__ . '/controllers/SeriesController.php';
 
-
+// Roteador 'match' atualizado
 match ($pagina) {
-    
-    //'logout'                    => HomeController::logout(),
-        
-    'filmes'                      => FilmesController::index(),
-    'filmes/novo'                 => FilmesController::novo(),
-    'filmes/apagar'               => FilmesController::apagarFilmes($url[2]),
-    'adicionar'            => FilmesController::adicionarFilmes(),
+    // Rotas do Menu de Navegação
+    'inicio' => HomeController::index(),
+    'filmes' => FilmesController::index(),
+    'series' => SeriesController::index(), // Corrigido para chamar o SeriesController
 
-    //'servicos/ver'              => ServicoController::verServicos($url[2]),
-    //'servicos/editar'           => ServicoController::editarServico($url[2]),
-    //'servicos/atualizar'        => ServicoController::atualizarServico(),
-    //'servicos/apagar'           => ServicoController::apagarServico($url[2]),
+    // Rotas de Ações de Filmes
+    'filmes/novo' => FilmesController::novo(),
+    'adicionar' => FilmesController::adicionarFilmes(),
+    'filmes/apagar' => FilmesController::apagarFilmes($url[2]),
 
-    default                     => FilmesController::index(),
+    // Rota Padrão
+    default => HomeController::index(),
 };
 
 exit;

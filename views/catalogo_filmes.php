@@ -1,8 +1,11 @@
 <?php
-require_once '../models/Filmes.php';
+require_once __DIR__ . '/../models/Filmes.php';
 $filmes = Filme::buscarFilmes();
 
 ?>
+
+<?php include 'header.php'; ?>
+
 <h1>Catálogo de Filmes</h1>
 <?php foreach ($filmes as $filme): ?>
     <div>
@@ -15,5 +18,5 @@ $filmes = Filme::buscarFilmes();
 
 <h2>Adicionar Filmes</h2>
 
-<a href="adicionar_filme.php" class="btn btn-primary">Adicionar</a>
+<a href="filmes/novo" class="btn btn-primary">Adicionar</a>
 <br><br>

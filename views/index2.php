@@ -1,8 +1,8 @@
 <?php
-require_once '../models/Filmes.php';
+require_once __DIR__ . '/../models/Filmes.php';
 $filmes = Filme::buscarFilmes();
 
-require_once '../models/Series.php';
+require_once __DIR__ . '/../models/Series.php';
 $series = Serie::buscarSeries();
 ?>
 
