@@ -57,11 +57,11 @@ class SeriesController {
     }
 
     public static function detalhe($id) {
-        $serie = Serie::buscarId($id); // Reutiliza a função que busca por ID
+        $serie = Serie::buscarId($id); 
         if ($serie) {
-            require __DIR__ . '/../views/detalhe_serie.php'; // Cria um novo arquivo de view para isso
+            require __DIR__ . '/../views/detalhe_serie.php'; 
         } else {
-            // Tratar caso a série não seja encontrada
+            
             header("Location: /vitor/IMDB/series");
             exit();
         }

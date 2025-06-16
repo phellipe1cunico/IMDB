@@ -10,15 +10,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         body {
-            padding-top: 70px; /* Espaço para a navbar fixa no topo */
+            padding-top: 70px;
         }
         .navbar-brand img {
-            height: 40px; /* Ajuste o tamanho do logo se tiver um */
+            height: 40px;
         }
         .card-img-top {
             width: 100%;
-            height: 300px; /* Altura fixa para as imagens dos cards */
-            object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer */
+            height: 300px;
+            object-fit: cover;
         }
         .card {
             margin-bottom: 1.5rem;
@@ -30,7 +30,7 @@
         }
         .btn-action-group {
             display: flex;
-            gap: 10px; /* Espaçamento entre os botões */
+            gap: 10px;
             margin-top: 15px;
         }
         .footer {
