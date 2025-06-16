@@ -1,5 +1,5 @@
 <?php
-// Note que esta view não precisa mais do require, pois o Controller já busca os dados.
+
 ?>
 <?php include 'header.php'; ?>
 <h1>Catálogo de Séries</h1>

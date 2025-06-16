@@ -74,7 +74,7 @@ class FilmesController {
 
     public static function apagarFilmes($idFilme) {
 
-        Filme::apagarFilme($idFilme); // Corrigido para o nome correto do método
+        Filme::apagarFilme($idFilme);
 
         header('Location: /vitor/IMDB/filmes');
         exit();
